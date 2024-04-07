@@ -1,17 +1,24 @@
-function reverseing(n) {
-  return n.split("").reverse().join("");
+// Find the largest palindrome made from the product of two 3-digit numbers.
+
+//BruteForce
+console.time("runtime");
+let myArray = [];
+function isPalindrome(num) {
+  const strNum = String(num);
+  return strNum === strNum.split("").reverse().join("");
 }
 
-// for (let i = 0; i <= 100; i++) {
-//   if (angka < i * i) {
-//     angka = i * i;
-//   }
-// }
+for (let i = 999; i >= 100; i--) {
+  for (let j = 999; j >= 100; j--) {
+    let number = i * j;
 
-// let bil1 = [1, 2, 3];
+    if (isPalindrome(number)) {
+      myArray.push(number);
+    }
+  }
+}
 
-// // let bil2 = bil1.split("").reverse().join("");
-// let bil3 = bil1.reverse();
-// console.log(bil3, bil1);
+const largestPalindrome = Math.max(...myArray);
+console.log("Largest Palindrome: " + largestPalindrome);
 
-console.log(reverseing("asdas"));
+console.timeEnd("runtime");
